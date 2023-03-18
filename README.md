@@ -1,7 +1,9 @@
 # sao-esm
 
-> 集成rollup、vue用于快速构建生成esm格式的npm包模板
+[![npm version](https://img.shields.io/npm/v/@packy-tang/sao-esm.svg)](https://www.npmjs.com/package/@packy-tang/sao-esm)
+[![NPM downloads](http://img.shields.io/npm/dm/@packy-tang/sao-esm.svg)](https://www.npmjs.com/package/@packy-tang/sao-esm)
 
+> 集成rollup、vue用于快速构建生成esm格式的npm包模板
 ## 特性
 
 本包特性包括以下内容：
