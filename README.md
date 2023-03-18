@@ -1,6 +1,7 @@
 # sao-esm
 
 [![npm version](https://img.shields.io/npm/v/@packy-tang/sao-esm.svg)](https://www.npmjs.com/package/@packy-tang/sao-esm)
+![](https://img.shields.io/node/v/@packy-tang/sao-esm)
 [![NPM downloads](http://img.shields.io/npm/dm/@packy-tang/sao-esm.svg)](https://www.npmjs.com/package/@packy-tang/sao-esm)
 
 > 集成rollup、vue用于快速构建生成esm格式的npm包模板
@@ -112,7 +113,7 @@ $ npm run release
   * `pretest` 测试前置命令
   * `rerelease` 自动发布的前置命令
 
-### release命令详细说明
+### release命令使用说明
 
 ```sh
 # 指定升级版本
@@ -122,68 +123,25 @@ $ npm run release 1.0.1
 $ npm run release -- --ci
 ```
 
-## 说明与建议
-
-### 代码模块的定义的建议
-
-样例包是给与前端组同事用于独立管理一些共用模块而建立出来用于示范作用的项目。共用模块可分为两种特性和三种层次，下面会进行说明：
-
-#### 两种特性
-
-| 特性           | 说明                                |
-|----------------|-------------------------------------|
-| Vue相关的代码  | 必须依赖于Vue框架才能正常运作的代码 |
-| 函数级别的代码 | 没有限制，最小粒度为一个函数方法    |
-
-#### 三种层次
-
-* 全量级别。这类代码会作为应用系统执行的基础，是在应用系统执行前就必须运作的代码。
-* 框架级别。如`Vue`,`React`这种框架或是`element-ui`,`iview`,`vant`这种UI组件，又或是`axios`,`js-cookie`这种常用的底层逻辑代码，又或是因项目总结常用的**函数级别的代码**均属于此层次。
-* 组件级别。此类更多为可选的能随意替换的代码，如某个业务功能UI组件。
-
-共用模块代码层次只是从完整的六大级（函数级别、组件级别、页面级别、框架级别、应用级别、系统级别）中的三个级进行抽离。代码适应情况更多地跟随应用及业务而设计。
-
-### CI/CD工具的作用
-
-目前工作链条基于[drone](http://drone.io)进行。已把基本的功能整合至`.drone.yml`配置内。大概会做以下工作：
-
-1. 登录自建npm服务
-2. 安装依赖
-3. 运行构建
-4. 运行测试
-5. 执行自动版本更新、产出日志，提交更改、打上标签并上传至远端。
-6. 发布至自己npm服务
-
-以上行为只在`production`分支发生推送(`push`)时执行。
-
-### 自动化链条运作说明
-
-自动化的工作链条是这样运作的：
-
-* CI/CD
-  1. 进行构建
-  2. 检测
-  3. 自动版本更新
-  4. 产出日志，提交更改
-  5. 打上标签并上传至远端
-* Verdaccio
-  1. 发送通知到飞书前端群
-
-
 ## TODOList
 
 - [ ] `.jsconfig` VSCode配置支持
 - [ ] VSCode编辑器内部断点支持
 - [ ] 代码格式化设置（prettier）
 - [ ] ESLint代码检测设置
+- [ ] 创建时增设node版本限制可选项
 
 ## 仓库制作说明
 
 本仓库是基于[lpreterite/sao-esmodule-mold](https://github.com/lpreterite/sao-esmodule-mold)创建，并添加了release-it自动日志产出工具，及drone的配置（CI/CD）。
 
+## 拆分说明与建议
+
+见 [拆分说明与建议](./docs/suggestion.md) 。
+
 ## License
 
-MIT &copy; [packy-tang &lt;lpreterite@126.com&gt;](uxfeel.com)
+MIT &copy; [packy-tang &lt;lpreterite@126.com&gt;](./LICENSE)
 
 
 [^1]: 单元测试模块由于使用[reify][reify]导致`@vue/test-utils`不能解析vue组件，抛出下面的错误。所以单元测试的文件下暂时不支持esm写法。
