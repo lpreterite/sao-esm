@@ -1,0 +1,8 @@
+{
+    "git": {
+        "changelog": "npm run auto-changelog -- --stdout --commit-limit false --unreleased --template https://gitee.com/packy-tang/release-it/raw/master/templates/changelog-compact.hbs"
+    },
+    "hooks": {
+        "after:bump": "npm run auto-changelog -- -p"
+    }
+}

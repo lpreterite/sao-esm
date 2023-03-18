@@ -1,0 +1,43 @@
+{
+  "name": "@packy-tang/sao-esm",
+  "version": "0.1.0",
+  "description": "集成rollup、vue用于快速构建生成esm格式的npm包模板",
+  "repository": {
+    "url": "https://github.com/lpreterite/sao-esm",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/lpreterite/sao-esm/issues"
+  },
+  "homepage": "https://github.com/lpreterite/sao-esm#readme",
+  "author": "packy-tang <lpreterite@126.com> (uxfeel.com)",
+  "keywords": [
+    "sao",
+    "template",
+    "esmodule",
+    "vue"
+  ],
+  "license": "MIT",
+  "files": [
+    "saofile.js",
+    "template"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "scripts": {
+    "test": "ava",
+    "release": "release-it",
+    "auto-changelog": "auto-changelog"
+  },
+  "dependencies": {
+    "superb": "^1.3.0"
+  },
+  "devDependencies": {
+    "auto-changelog": "^2.2.1",
+    "ava": "^0.25.0",
+    "release-it": "^14.6.2",
+    "sao": "^1.0.0"
+  }
+}
