@@ -1,6 +1,6 @@
 {
   "name": "@packy-tang/sao-esm",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "集成rollup、vue用于快速构建生成esm格式的npm包模板",
   "repository": {
     "url": "https://github.com/lpreterite/sao-esm",
