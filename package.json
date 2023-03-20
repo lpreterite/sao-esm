@@ -22,6 +22,10 @@
     "saofile.js",
     "template"
   ],
+  "engines": {
+    "npm": ">=6.0.0",
+    "node": ">=8.0.0 <14"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
