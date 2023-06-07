@@ -12,7 +12,7 @@ module.exports = {
       {
         name: 'scope',
         message: '组织名称，用于npm包安装',
-        default: '',
+        default: ({ name })=> `@${this.gitUser.username || this.gitUser.name}`,
       },
       {
         name: 'npm_name',
@@ -25,6 +25,13 @@ module.exports = {
         type: 'list',
         choices: ['function', 'vue'],
         default: 'function'
+      },
+      {
+        name: 'e2eTest',
+        message: '是否使用e2e测试',
+        type: 'confirm',
+        default: false,
+        when: answer => answer.moduleBy == "vue"
       },
       {
         name: 'description',
@@ -100,6 +107,10 @@ module.exports = {
         const files = []
         if(answers.moduleBy !== 'vue') {
           const removeFiles = [`src/components`,'tests/unit/HelloWorld.spec.js','example','vue.config.js']
+          removeFiles.forEach(file=>files.push(file))
+        }
+        if(!answers.e2eTest){
+          const removeFiles = [`tests/e2e`,'cypress.json']
           removeFiles.forEach(file=>files.push(file))
         }
         return files
