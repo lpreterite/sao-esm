@@ -4,22 +4,28 @@
 ![](https://img.shields.io/node/v/@packy-tang/sao-esm)
 [![NPM downloads](http://img.shields.io/npm/dm/@packy-tang/sao-esm.svg)](https://www.npmjs.com/package/@packy-tang/sao-esm)
 
-> 集成rollup、vue用于快速构建生成esm格式的npm包模板
+> 快速构建函数应用、vue组件的工具。
+
+## 介绍
+
+项目是公司内部用于快速构建各类包应用而诞生，目标是快速建立一个可用于发布的，符合npm发布规范的最小程序集。
+
 ## 特性
 
-本包特性包括以下内容：
+以下是这个工具的特性：
 
 * 构建
-  * [x] 包产出支持，支持umd/cjs/esm格式内容的产出[^1]
+  * [x] rollup构建
+  * [x] 支持umd/cjs/esm格式内容的产出[^1]
   * [x] 包含babel兼容
-  * [x] 支持Vue组件构建及本地调试
-  * [ ] 支持WMF特性[^4]
-* 自动化[^2]
+  * [x] 支持Vue组件构建及本地调试（vue-cli, webpack）
+  * [ ] 支持WMF特性[^2]
+* 自动化[^3]
   * [x] 支持自动版本管理
   * [x] 支持自动产出日志
   * [x] 支持一键发布npm
 * 测试
-  * [x] 支持Mocha单元测试，~~支持es2015写法~~ [^3]
+  * [x] 支持Mocha单元测试
   * [x] 测试覆盖报告支持
   * [x] 增加关于Vue的e2e测试及可视化支持
 * 基础设置
@@ -60,7 +66,7 @@ $ sao /home/lpre/sao-esm my-module
 $ rm -rf ~/.sao/
 ```
 
-### 初次发版
+### 首次发版
 
 初次发版需要在本地操作，下面是具体步骤：
 
@@ -81,6 +87,12 @@ $ npm run release -- 1.0.0
 # 请自行切换至`production`分支，并同步`master`分支至`production`分支。
 # 在`production`分支下进行
 $ npm run release
+
+# 指定升级版本
+$ npm run release -- 1.0.1 
+
+# 自动完成
+$ npm run release -- --ci
 ```
 
 ## 命令
@@ -113,16 +125,6 @@ $ npm run release
   * `pretest` 测试前置命令
   * `rerelease` 自动发布的前置命令
 
-### release命令使用说明
-
-```sh
-# 指定升级版本
-$ npm run release 1.0.1 
-
-# 自动完成
-$ npm run release -- --ci
-```
-
 ## TODOList
 
 - [ ] `.jsconfig` VSCode配置支持
@@ -143,17 +145,14 @@ $ npm run release -- --ci
 
 MIT &copy; [packy-tang &lt;lpreterite@126.com&gt;](./LICENSE)
 
+[^1]: 项目中关于Vue部分，是基于`rollup`构建，并在[Vue指南][vue cookbook]的指导下进行制作符合npm平台的包代码。
 
-[^1]: 单元测试模块由于使用[reify][reify]导致`@vue/test-utils`不能解析vue组件，抛出下面的错误。所以单元测试的文件下暂时不支持esm写法。
+[^2]: WMF全称[Webpack Module Federation][WMF]，是webpack5 推出名叫模块联合的新功能，用于解决前端巨石项目的困境。具体看这三份文章：[《Webpack 5 之 模块联合（Module Federation）》](wmf_l1)、[《模块共享那些事》](wmf_l2)、[《探索 webpack5 新特性 Module federation 在腾讯文档的应用》](wmf_l3)。
 
-[^2]: 此包使用`release-it`来实现做自动化实现，其中自动管理版本功能是[基于angular.js社区][ang-commit-guidelines]的提交规范来识别处理。详细的提交规范可阅读这份[《如何维护更新日志》][keepachangelog]内容。
-
-[^3]: [基于Vue指南][vue cookbook]将用于npm平台下包的代码使用`rollup`构建。
-
-[^4]: WMF全称[Webpack Module Federation][WMF]，是webpack5 推出名叫模块联合的新功能，用于解决前端巨石项目的困境。具体看这三份文章：[《Webpack 5 之 模块联合（Module Federation）》](wmf_l1)、[《模块共享那些事》](wmf_l2)、[《探索 webpack5 新特性 Module federation 在腾讯文档的应用》](wmf_l3)。
+[^3]: 此包使用`release-it`来实现做自动化实现，其中自动管理版本功能是[基于angular.js社区][ang-commit-guidelines]的提交规范来识别处理。详细的提交规范可阅读这份[《如何维护更新日志》][keepachangelog]内容。
 
 [reify]: https://www.npmjs.com/package/reify
-[vue cookbook]: https://cn.vuejs.org/v2/cookbook/packaging-sfc-for-npm.html
+[vue cookbook]: https://v2.cn.vuejs.org/v2/cookbook/packaging-sfc-for-npm.html
 [ang-commit-guidelines]: https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines
 [keepachangelog]: https://keepachangelog.com/zh-CN/1.0.0/
 [WMF]: https://indepth.dev/posts/1173/webpack-5-module-federation-a-game-changer-in-javascript-architecture
